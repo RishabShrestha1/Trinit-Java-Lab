@@ -1,86 +1,72 @@
-
-
 import java.awt.*;
 import javax.swing.*;
-
+import java.awt.event.*;
 import Lab6.qno1;
 
-import java.awt.event.*;
+class DISPLAY {
 
-class Dashboard {
-    Dashboard() {
-        JFrame jfd = new JFrame("Dashboard");
-        jfd.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jfd.setLayout(new FlowLayout());
-        jfd.add(new JTextArea("Login Successful"), BorderLayout.CENTER);
-        jfd.setSize(400, 400);
-        jfd.setVisible(true);
+    DISPLAY() {
+        JFrame frame = new JFrame("DISPLAY");
+        frame.setLayout(new FlowLayout());
+        JLabel label = new JLabel("LOGIN SUCCESSFUL");
+
+        frame.add(label);
+        frame.setSize(400, 400);
+        frame.setVisible(true);
+        
     }
 }
 
 public class qno2 implements ActionListener {
-    JFrame jf;
-    JButton jbLogin, jbSignUp;
-    JLabel username, password;
-    JTextField uField;
-    JPasswordField pField;
-    GridBagConstraints gbc;
 
-    public qno2() {
-        jf = new JFrame("Login Form");
-        jf.setSize(400, 400);
-        jf.setLayout(new GridBagLayout());
-        
-        gbc = new GridBagConstraints();
-        
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.gridx = 0; gbc.gridy = 1;
-        username = new JLabel("Username: ");
-        jf.add(username, gbc);
+    JFrame Login1;
+    JLabel Username;
+    JLabel Password;
+    JTextField usernameField;
+    JPasswordField passwordField;
+    JButton LoginButton;
+    JButton SignupButton;
 
-        gbc.gridx = 1;
-        uField = new JTextField(10);
-        jf.add(uField, gbc);
+    qno2() {
+        Login1 = new JFrame("Login Form");
+        Login1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Login1.setSize(400, 300);
 
-        gbc.gridx = 0; gbc.gridy = 2;
-        password = new JLabel("Password: ");
-        jf.add(password, gbc);
-        
-        gbc.gridx = 1;
-        pField = new JPasswordField(10);
-        jf.add(pField, gbc);
-        
-        gbc.insets = new Insets(10, 5, 10, 5);
-        gbc.gridx = 0; gbc.gridy = 3;
-        jbLogin = new JButton("Login");
-        jbLogin.addActionListener(this);
-        jf.add(jbLogin, gbc);
+        Username = new JLabel("Username:");
+        usernameField = new JTextField(10);
+        Password = new JLabel("Password:");
+        passwordField = new JPasswordField(10); // Removed type declaration
+        LoginButton = new JButton("Login"); // Removed type declaration
+        LoginButton.addActionListener(this);
+        SignupButton = new JButton("Signup");
+        SignupButton.addActionListener(this);
 
-        gbc.anchor = GridBagConstraints.LAST_LINE_END;
-        gbc.gridx = 1;
-        jbSignUp = new JButton("Sign up");
-        jbSignUp.addActionListener(this);
-        jf.add(jbSignUp, gbc);
-        
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.gridwidth = 2;
-        gbc.gridx = 0; gbc.gridy = 0;
-        jf.add(new JLabel("LOGIN"), gbc);
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(0, 2));
+        panel.add(Username);
+        panel.add(usernameField);
+        panel.add(Password);
+        panel.add(passwordField);
+        panel.add(LoginButton);
+        panel.add(SignupButton);
 
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.setVisible(true);
+        Login1.add(panel);
+        Login1.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == jbLogin && !(uField.getText().isEmpty()) && (pField.getPassword().length != 0)) {
-            jf.dispose();
-            new Dashboard();
-        } else if (e.getSource() == jbSignUp) {
-            jf.dispose();
+        if (e.getSource() == LoginButton && !usernameField.getText().isEmpty() && passwordField.getPassword().length > 0) {
+            Login1.dispose();
+             SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new DISPLAY();
+            }
+        });
+        } else if (e.getSource() == SignupButton) {
+            Login1.dispose();
             new qno1();
         }
     }
-
     public static void main(String[] args) {
         new qno2();
     }
