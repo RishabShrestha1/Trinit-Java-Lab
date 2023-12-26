@@ -72,6 +72,6 @@ public class qno1 {
     }
 
     public static void main(String[] args) {
-        qno1 newUser = new qno1();
+        new qno1();
     }
 }

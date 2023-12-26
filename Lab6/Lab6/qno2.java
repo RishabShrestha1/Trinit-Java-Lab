@@ -1,7 +1,8 @@
+package Lab6;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import Lab6.qno1;
 
 class DISPLAY {
 
@@ -35,8 +36,8 @@ public class qno2 implements ActionListener {
         Username = new JLabel("Username:");
         usernameField = new JTextField(10);
         Password = new JLabel("Password:");
-        passwordField = new JPasswordField(10); // Removed type declaration
-        LoginButton = new JButton("Login"); // Removed type declaration
+        passwordField = new JPasswordField(10); 
+        LoginButton = new JButton("Login"); 
         LoginButton.addActionListener(this);
         SignupButton = new JButton("Signup");
         SignupButton.addActionListener(this);
