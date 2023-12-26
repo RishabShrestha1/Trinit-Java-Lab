@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class qno1 {
-    qno1() {
+     public qno1() {
         JFrame userForm = new JFrame("User Addition Form");
         userForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         userForm.setSize(400, 300);
